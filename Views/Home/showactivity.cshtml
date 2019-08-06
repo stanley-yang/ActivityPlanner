@@ -1,0 +1,69 @@
+
+<div class="container">
+    <div class="header">
+        <div class="headerleft">
+         <h1>@ViewBag.Activity.Activity</h1>
+    </div>
+    <div class="headerright">
+
+        <a href="/home">Dashboard</a>
+        <a href="/logout">Logout</a>
+        <br>
+        <br>
+
+
+        @{
+            if(@ViewBag.Activity.Planner.UserId == @ViewBag.UserId)
+                    {
+                        <td><a href="/delete/@ViewBag.Activity.ActivityId">Delete</a></td>
+                    }
+            else{
+
+                bool going = false;
+                @foreach(var rsvp in @ViewBag.Activity.Rsvps)
+                {
+                    if (rsvp.UserId == @ViewBag.UserId)
+                    {
+                        going = true;
+                    }
+                }
+
+                @if(going == false)
+                {
+                    
+                    <td><a href="/rsvpinside/@ViewBag.Activity.ActivityId">Join</a></td>
+                }
+                else
+                {
+                <td><a href="/Leave/@ViewBag.Activity.ActivityId">Leave</a></td>
+                }
+            }
+            
+        }
+
+
+    </div>
+    </div>
+    <div class="main">
+       
+        <p>Event Coordinator: @ViewBag.Activity.Planner.Name</p>
+        
+        <br>
+
+        <h3>Description</h3>@ViewBag.Activity.Description
+    <h3>Other Participants</h3>
+   
+    @foreach (var rsvp in @ViewBag.Activity.Rsvps)
+    {
+        @if(rsvp.user.UserId == @ViewBag.UserId)
+        {
+
+        }
+        else{
+        <li>@rsvp.user.Name</li>
+        }
+    }
+
+ 
+</div>
+

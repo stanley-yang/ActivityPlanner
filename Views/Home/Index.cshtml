@@ -1,0 +1,69 @@
+﻿@model User
+
+<div class="header">
+
+        <h1> Welcome to the Dojo Activity Center</h1>
+
+
+</div>
+<div class="main">
+    
+
+        <div class="mainleft">
+            <p>Register</p>
+            <br>
+            <br>
+            
+            <form asp-action="Create" asp-controller="Home" method="post">
+            
+            <div class="group">
+            <input asp-for="Name" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label asp-for="Name"></label>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Name"></span>
+            </div>
+            </div>
+
+            <div class="group">
+            <input asp-for="Email" required>
+            <label asp-for="Email"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Email"></span>
+            </div>
+            </div>
+
+            <div class="group">
+            <input asp-for="Password" required>
+            <label asp-for="Password"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Password"></span>
+            </div>
+            </div>
+
+            <div class="group">
+            <input asp-for="Confirm" required>
+            <label asp-for="Confirm"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Confirm"></span>
+            </div>
+            </div>
+
+            <p><input class="submit" type="submit" value="Register"></p>
+        </form>
+        </div>
+     
+     <div class="mainright">
+        @{ 
+            LoginUser luser = new LoginUser();
+        }
+        <partial name="loginpartial" model="luser"></partial>
+     </div>
+</div>

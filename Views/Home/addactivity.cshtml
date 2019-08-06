@@ -1,0 +1,82 @@
+@model Activity
+<div class="header">
+    <div class="headerleft">
+        Create an Activity
+        <br>
+        <br>
+    </div>
+    <div class="headerright">
+        <a href="home">Dashboard</a>
+        <a href="logout">Logout</a>
+    </div>
+</div>
+<div class="main">
+    <form asp-action="postactivity" asp-controller="Home" method="post">
+
+        <div class="mainleft">
+            <p>Activity</p>
+            <div class="">
+            <input asp-for="Event" required>
+            <label asp-for="Event"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Event"></span>
+            </div>
+            </div>
+
+   <br>
+            <p>Duration</p>
+            <div class="">
+            <input asp-for="Duration" class="dur" required>
+            <label asp-for="Duration"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+                <select name="hoursmins">
+                    <option value="Hours">Hours</option>
+                    <option value="Minutes">Minutes</option>
+                </select>
+            <span class="validation" asp-validation-for="Duration"></span>
+            </div>
+            </div>
+
+   <br>
+            <p>Date</p>
+            <div class=" ttime">
+            <input asp-for="Datetime" required>
+            <label asp-for="Datetime"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Datetime"></span>
+            </div>
+            </div>
+
+   <br>
+            <p>Time</p>
+            <div class=" ttime">
+            <input asp-for="time" required>
+            <label asp-for="time"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="time"></span>
+            </div>
+            </div>
+
+            <br>
+            <p>Description</p>
+             <div class="group">
+            <input asp-for="Description" required>
+            <label asp-for="Description"></label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <div class="validatediv">
+            <span class="validation" asp-validation-for="Description"></span>
+            </div>
+            </div>
+            <input type="submit" value="Create">
+        </div>
+     </form>
+</div>

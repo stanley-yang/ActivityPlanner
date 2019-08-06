@@ -1,0 +1,77 @@
+@model List<Activity>
+
+<div class="header">
+    <div class="headerleft">
+        Success!
+    </div>
+    <div class="headerright">
+        <a href="logout">Logout</a>
+    </div>
+</div>
+<div class="main">
+    <table class="table">
+        <tr>
+            <th>Activity</th>
+            <th>Date and Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator</th>
+            <th>No. of Participants</th>
+            <th>Actions</th>
+        </tr>
+
+
+
+    
+    @{
+    foreach(Activity act in Model)
+    {
+        <tr>
+            <td><a href="activity/@act.ActivityId">@act.Event</a></td>
+
+            @{
+
+
+            }
+            <td>@act.Datetime.ToString("MM/dd/yyyy") @act.time</td>
+            <td>@act.Duration @act.hoursmins</td>
+            <td>@act.Planner.Name</td>
+            @{
+            var counter = @act.Rsvps.Count();
+            }
+            <td>@counter</td>
+            @if(@act.UserId == @ViewBag.UserId)
+            {
+                <td><a href="delete/@act.ActivityId">Delete</a></td>
+            }
+            else
+            {
+                bool going = false;
+                @foreach(var rsvp in act.Rsvps)
+                {
+                    if (rsvp.UserId == @ViewBag.UserId)
+                    {
+                        going = true;
+                    }
+                }
+
+                @if(going == false)
+                {
+                <td><a href="RSVP/@act.ActivityId">Join</a></td>
+                }
+                else
+                {
+                <td><a href="Leave/@act.ActivityId">Leave</a></td>
+                }
+
+            }
+
+        </tr>
+        
+    }
+}
+    <a href="addactivity">Add New Activity</a>
+
+
+
+    </table>
+</div>
